@@ -4,7 +4,7 @@ import numpy as np
 import trimesh
 import os
 from pathlib import Path
-from morgbd.model.v2 import MoRGBDModel as v2
+from mdm.model.v2 import MDMModel as v2
 
 def preprocess_input_image(image_path, device):
     """

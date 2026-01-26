@@ -4,7 +4,7 @@
 # found in the LICENSE file in the root directory of this source tree.
 
 '''
-Docstring for MoRGBD.morgbd.model.dinov2_rgbd.models_vlmae
+Docstring for MDM.mdm.model.dinov2_rgbd.models_vlmae
 =======================================================
 This version is modified from the original DINOv2 to support the MIM(masked image modeling) of RGBD input.
 (The original DINOv2 is available at https://github.com/facebookresearch/dinov2.)

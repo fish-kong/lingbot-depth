@@ -18,7 +18,7 @@ from .modules_decoder import MLP, ConvStack
 from ..utils.geo import depth_to_pointcloud, normalized_view_plane_uv
 
 
-class MoRGBDModel(nn.Module):
+class MDMModel(nn.Module):
     encoder: Union[DINOv2_RGBD_Encoder]
     neck: ConvStack
     points_head: ConvStack
@@ -39,7 +39,7 @@ class MoRGBDModel(nn.Module):
         num_tokens_range: List[int] = [1200, 3600],
         **deprecated_kwargs
     ):
-        super(MoRGBDModel, self).__init__()
+        super(MDMModel, self).__init__()
         if deprecated_kwargs:
             warnings.warn(f"The following deprecated/invalid arguments are ignored: {deprecated_kwargs}")
 
@@ -69,7 +69,7 @@ class MoRGBDModel(nn.Module):
         cls, 
         pretrained_model_name_or_path: Union[str, Path, IO[bytes]], 
         model_kwargs: Optional[Dict[str, Any]] = None, 
-        **hf_kwargs) -> 'MoRGBDModel':
+        **hf_kwargs) -> 'MDMModel':
         if Path(pretrained_model_name_or_path).exists():
             checkpoint_path = pretrained_model_name_or_path
         else:

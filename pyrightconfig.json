@@ -1,6 +1,6 @@
 {   
     "include": [
-        "morgbd"
+        "mdm"
     ],
     "ignore": [
         "**"

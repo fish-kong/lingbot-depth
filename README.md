@@ -66,11 +66,11 @@ pip install -r requirements.txt
 import torch
 import cv2
 import numpy as np
-from morgbd.model.v2 import MoRGBDModel
+from mdm.model.v2 import MDMModel
 
 # Load model
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = MoRGBDModel.from_pretrained('ckpt/model.pt').to(device)
+model = MDMModel.from_pretrained('ckpt/model.pt').to(device)
 
 # Load and prepare inputs
 image = cv2.imread('examples/0/rgb.png')
