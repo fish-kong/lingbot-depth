@@ -1,8 +1,14 @@
 # LingBot-Depth: Masked Depth Modeling for Spatial Perception
 
-[![arXiv](https://img.shields.io/badge/arXiv-2401.xxxxx-b31b1b.svg)](https://arxiv.org/abs/2401.xxxxx)
+
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+
+📝 **[arXiv](https://arxiv.org/abs/2601.xxxxx)** |
+📄 **[Technical Report](https://github.com/Robbyant/lingbot-depth/blob/main/tech-report.pdf)** |
+🌐 **[Project Page](https://technology.robbyant.com/lingbot-depth)** |
+💻 **[Code](https://github.com/robbyant/lingbot-depth)**
+
 
 **LingBot-Depth** transforms incomplete and noisy depth sensor data into high-quality, metric-accurate 3D measurements. By jointly aligning RGB appearance and depth geometry in a unified latent space, our model serves as a powerful spatial perception foundation for robot learning and 3D vision applications.
 
@@ -251,10 +257,5 @@ This work builds upon several excellent open-source projects:
 For questions, discussions, or collaborations:
 
 - **Issues**: Open an [issue](https://github.com/robbyant/lingbot-depth/issues) on GitHub
-- **Email**: Contact the corresponding authors
+- **Email**: Contact tanbin.tan@antgroup.com, xuenan.xue@antgroup.com
 
----
-
-📄 **Paper:** [Masked Depth Modeling for Spatial Perception](https://example.com)
-🌐 **Project Page:** [LingBot-Depth](https://example.com)
-💻 **Code:** [GitHub Repository](https://github.com/robbyant/lingbot-depth)
