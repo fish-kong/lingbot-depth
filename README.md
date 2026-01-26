@@ -3,6 +3,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.9+](https://img.shields.io/badge/pytorch-2.6+-green.svg)](https://www.python.org/downloads/)
 
 📝 **[arXiv](https://arxiv.org/abs/2601.xxxxx)** |
 📄 **[Technical Report](https://github.com/Robbyant/lingbot-depth/blob/main/tech-report.pdf)** |
@@ -41,9 +42,7 @@ The curated RGB-D dataset (3M RGB-depth pairs, including 2M real and 1M simulate
 
 ### Requirements
 
-- Python ≥ 3.9
-- PyTorch ≥ 2.0.0
-- CUDA-capable GPU (recommended)
+• Python ≥ 3.9 • PyTorch ≥ 2.0.0 • CUDA-capable GPU (recommended)
 
 ### From source
 
