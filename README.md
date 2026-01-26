@@ -28,7 +28,7 @@ We provide pretrained models for different scenarios:
 | LingBot-Depth | [model.pt](https://example.com/model.pt) | General-purpose depth refinement |
 | LingBot-Depth-DC | [model.pt](https://example.com/model-dc.pt) | Optimized for sparse depth completion |
 
-### Data
+### Data Release
 The curated RGB-D dataset (3M RGB-depth pairs, including 2M real and 1M simulated samples) will be released upon completion of the necessary licensing and approval procedures. Our expected date is the mid of March.
 
 ## Installation
@@ -42,7 +42,7 @@ The curated RGB-D dataset (3M RGB-depth pairs, including 2M real and 1M simulate
 ### From source
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/robbyant/lingbot-depth
 cd lingbot-depth
 pip install -e .
 ```
@@ -250,11 +250,11 @@ This work builds upon several excellent open-source projects:
 
 For questions, discussions, or collaborations:
 
-- **Issues**: Open an [issue](https://github.com/example/RGBD-MAE/issues) on GitHub
+- **Issues**: Open an [issue](https://github.com/robbyant/lingbot-depth/issues) on GitHub
 - **Email**: Contact the corresponding authors
 
 ---
 
 📄 **Paper:** [Masked Depth Modeling for Spatial Perception](https://example.com)
 🌐 **Project Page:** [LingBot-Depth](https://example.com)
-💻 **Code:** [GitHub Repository](https://github.com/example/RGBD-MAE)
+💻 **Code:** [GitHub Repository](https://github.com/robbyant/lingbot-depth)
