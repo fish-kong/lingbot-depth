@@ -30,10 +30,10 @@ Our approach refines raw sensor depth into clean, complete measurements, enablin
 
 We provide pretrained models for different scenarios:
 
-| Model | Checkpoint | Description |
+| Model | Hugging Face Model | Description |
 |-------|-----------|-------------|
-| LingBot-Depth | [model_mdm_pretrain.pt](https://huggingface.co/robbyant/lingbot-depth/blob/main/model_mdm_pretrain.pt) | General-purpose depth refinement |
-| LingBot-Depth-DC | [model_mdm_posttrain_dc.pt](https://huggingface.co/robbyant/lingbot-depth/blob/main/model_mdm_posttrain_dc.pt) | Optimized for sparse depth completion |
+| LingBot-Depth | [robbyant/lingbot-depth-pretrain-vitl-14](https://huggingface.co/robbyant/lingbot-depth-pretrain-vitl-14/tree/main) | General-purpose depth refinement |
+| LingBot-Depth-DC | [robbyant/lingbot-depth-postrain-dc-vitl14](https://huggingface.co/robbyant/lingbot-depth-postrain-dc-vitl14/tree/main) | Optimized for sparse depth completion |
 
 ### Data Release (Coming Soon)
 - The curated 3M RGB-D dataset will be released upon completion of the necessary licensing and approval procedures. 
@@ -71,7 +71,7 @@ from mdm.model.v2 import MDMModel
 
 # Load model
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = MDMModel.from_pretrained('robbyant/lingbot-depth/model_mdm_pretrain.pt').to(device)
+model = MDMModel.from_pretrained('robbyant/lingbot-depth-pretrain-vitl-14').to(device)
 
 # Load and prepare inputs
 image = cv2.cvtColor(cv2.imread('examples/0/rgb.png'), cv2.COLOR_BGR2RGB)
@@ -97,6 +97,8 @@ points = output['points']      # 3D point cloud
 ```
 
 **Run example:**
+
+Download the model weight from [Hugging Face](https://huggingface.co/robbyant/lingbot-depth-pretrain-vitl-14/tree/main) and put it in the `ckpt` folder. Then run:
 
 ```bash
 python example.py
