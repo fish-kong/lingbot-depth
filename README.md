@@ -6,6 +6,7 @@
 [![PyTorch 2.6+](https://img.shields.io/badge/pytorch-2.6+-green.svg)](https://pytorch.org/)
 
 📄 **[Technical Report](https://github.com/Robbyant/lingbot-depth/blob/main/tech-report.pdf)** |
+📄 **[arXiv](https://arxiv.org/abs/2601.17895)** |
 🌐 **[Project Page](https://technology.robbyant.com/lingbot-depth)** |
 💻 **[Code](https://github.com/robbyant/lingbot-depth)** |
 🤗 **[Hugging Face](https://huggingface.co/collections/robbyant/lingbot-depth)** |
@@ -230,7 +231,7 @@ If you find this work useful for your research, please cite:
 @article{lingbot-depth2026,
   title={Masked Depth Modeling for Spatial Perception},
   author={Tan, Bin and Sun, Changjiang and Qin, Xiage and Adai, Hanat and Fu, Zelin and Zhou, Tianxiang and Zhang, Han and Xu, Yinghao and Zhu, Xing and Shen, Yujun and Xue, Nan},
-  journal={arXiv preprint arXiv:2601.xxxxx},
+  journal={arXiv preprint arXiv:[2601.17895]},
   year={2026}
 }
 ```
