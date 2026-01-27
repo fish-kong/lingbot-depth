@@ -298,15 +298,19 @@ class DinoVisionTransformer(nn.Module):
         x_img = x_img + img_pose_enc
         x_depth = x_depth + depth_pose_enc
 
-        ## mask depth tokens        
-        x_depth_masked, depth_mask_info = depth_masking(
-            x_depth, 
-            depth_patch_num_h, 
-            depth_patch_num_w,
-            depth_values=x_depth_raw,
-            depth_mask_threshold_num=[1]*B,
-            valid_depth_range=(-9.5, 200.0)
-        )
+        ## mask depth tokens
+        if kwargs.get('enable_depth_mask', True):        
+            x_depth_masked, depth_mask_info = depth_masking(
+                x_depth, 
+                depth_patch_num_h, 
+                depth_patch_num_w,
+                depth_values=x_depth_raw,
+                depth_mask_threshold_num=[1]*B,
+                valid_depth_range=(-9.5, 200.0)
+            )
+        else:
+            x_depth_masked = x_depth
+            depth_mask_info = None
         
         ## mask image tokens
         x_img_masked = x_img
@@ -330,6 +334,10 @@ class DinoVisionTransformer(nn.Module):
 
     def _get_intermediate_layers_not_chunked(self, x_img, x_depth, x_img_mask=None, x_depth_mask=None, n=1, return_mae_aux=False, **kwargs):
         x = self.prepare_tokens_with_masks(x_img, x_depth, x_img_mask, x_depth_mask, **kwargs)
+
+        if not kwargs.get('enable_depth_mask', True):
+            x = torch.cat(x, dim=0)
+
         # If n is an int, take the n last blocks. If it's a list, take them
         output, total_block_len = [], len(self.blocks)
         blocks_to_take = range(total_block_len - n, total_block_len) if isinstance(n, int) else n
@@ -338,10 +346,10 @@ class DinoVisionTransformer(nn.Module):
             if i in blocks_to_take:
                 output.append(x)
         assert len(output) == len(blocks_to_take), f"only {len(output)} / {len(blocks_to_take)} blocks found"
-        if return_mae_aux:
-            return output
-        else:
-            return output
+        
+        if not kwargs.get('enable_depth_mask', True):
+            output = [list(torch.split(out, 1, dim=0)) for out in output]
+        return output
 
     def _get_intermediate_layers_chunked(self, x_img, x_depth, x_img_mask=None, x_depth_mask=None, n=1, return_mae_aux=False, **kwargs):
         x = self.prepare_tokens_with_masks(x_img, x_depth, x_img_mask, x_depth_mask, **kwargs)
@@ -355,11 +363,9 @@ class DinoVisionTransformer(nn.Module):
                     output.append(x)
                 i += 1
         assert len(output) == len(blocks_to_take), f"only {len(output)} / {len(blocks_to_take)} blocks found"
-        if return_mae_aux:
-            return output
-        else:
-            return output
-    
+        
+        return output
+
     def extract_features(self, outputs, norm=True):
         feat_outputs = []
         class_tokens = []
