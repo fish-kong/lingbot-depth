@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import cv2
-from scipy.io import 
 import numpy as np
 def depth_to_color_opencv(depth_map, vmin=None, vmax=None, colormap=cv2.COLORMAP_TURBO):
     """
