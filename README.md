@@ -56,7 +56,10 @@ cd lingbot-depth
 
 # Install the package us uv 
 pip install uv
-# if cuda is not 128, change line 59 of pyproject.toml 
+# if cuda is not 128, change line 59 of pyproject.toml then
+uv sync  --extra gpu 
+# if do not have a gpu, use
+uv sync  --extra cpu 
 # download model 
 uv run modelscope download --model Robbyant/lingbot-depth --local_dir ./robbyant 
 
