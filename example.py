@@ -277,6 +277,9 @@ Examples:
         print(f"\n📥 Loading data...")
         image_np, image_tensor = preprocess_input_image(str(rgb_path), device)
         depth_np = load_depth_map(str(depth_path))
+        min_depth_valid = np.percentile(depth_np[depth_np > 0.1], 0.1)
+        rescale_factor = 2.0 / min_depth_valid
+        depth_np = depth_np * rescale_factor  # rescale depth value
         depth_tensor = torch.tensor(depth_np, dtype=torch.float32, device=device)
 
         h, w = image_np.shape[:2]
@@ -306,7 +309,7 @@ Examples:
             )
         inference_time = time.time() - start_time
 
-        depth_pred = output['depth'].squeeze().cpu().numpy()
+        depth_pred = output['depth'].squeeze().cpu().numpy()/rescale_factor  
         points_pred = output['points'].squeeze().cpu().numpy()
 
         print(f"   ✓ Inference completed in {inference_time:.3f}s")

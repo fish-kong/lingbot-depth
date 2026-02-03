@@ -54,52 +54,21 @@ We provide pretrained models for different scenarios:
 git clone https://github.com/robbyant/lingbot-depth
 cd lingbot-depth
 
-# Install the package (use 'python -m pip' to ensure correct environment)
-conda create -n lingbot-depth python=3.9
-conda activate lingbot-depth
-python -m pip install -e .
+# Install the package us uv 
+pip install uv
+# if cuda is not 128, change line 59 of pyproject.toml 
+# download model 
+modelscope download --model Robbyant/lingbot-depth --local_dir ./robbyant 
+
 ```
 ## Quick Start
 
 **Inference:**
-
-```python
-import torch
-import cv2
-import numpy as np
-from mdm.model.v2 import MDMModel
-
-# Load model
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = MDMModel.from_pretrained('robbyant/lingbot-depth-pretrain-vitl-14').to(device)
-
-# Load and prepare inputs
-image = cv2.cvtColor(cv2.imread('examples/0/rgb.png'), cv2.COLOR_BGR2RGB)
-h, w = image.shape[:2]
-image = torch.tensor(image / 255, dtype=torch.float32, device=device).permute(2, 0, 1)[None]
-
-depth = cv2.imread('examples/0/raw_depth.png', cv2.IMREAD_UNCHANGED).astype(np.float32) / 1000.0
-depth = torch.tensor(depth, dtype=torch.float32, device=device)[None]
-
-intrinsics = np.loadtxt('examples/0/intrinsics.txt')
-intrinsics[0] /= w  # Normalize fx and cx by width
-intrinsics[1] /= h  # Normalize fy and cy by height
-intrinsics = torch.tensor(intrinsics, dtype=torch.float32, device=device)[None]
-
-# Run inference
-output = model.infer(
-    image,
-    depth_in=depth,
-    intrinsics=intrinsics)
-
-depth_pred = output['depth']  # Refined depth map
-points = output['points']      # 3D point cloud
-```
-
 **Run example:**
 
 The model is automatically downloaded from Hugging Face on first run (no manual download needed):
 
+modelscope download --model Robbyant/lingbot-depth README.md --local_dir ./dir
 ```bash
 # Basic usage - processes example 0
 python example.py
@@ -108,7 +77,7 @@ python example.py
 python example.py --example 1
 
 # Use depth completion optimized model
-python example.py --model robbyant/lingbot-depth-postrain-dc-vitl14
+python example.py --model robbyant/lingbot-depth-pretrain-vitl-14/model.pt
 
 # Custom output directory
 python example.py --output my_results

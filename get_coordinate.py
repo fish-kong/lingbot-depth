@@ -1,12 +1,7 @@
 # -*- coding: utf-8 -*-
-
-
-
-
 import cv2
-from scipy.io import loadmat
+from scipy.io import 
 import numpy as np
-import open3d as o3d
 def depth_to_color_opencv(depth_map, vmin=None, vmax=None, colormap=cv2.COLORMAP_TURBO):
     """
     Convert depth map to color visualization using OpenCV colormap.
@@ -58,10 +53,10 @@ def mouse_callback(event, x, y, flags, userdata):
 cv2.namedWindow('Image')
 cv2.setMouseCallback('Image', mouse_callback)
 
-origdepth = np.load('result-mask/depth_input.npy')
-preddepth = np.load('result-mask/depth_refined.npy')
+origdepth = np.load('result/depth_input.npy')
+preddepth = np.load('result/depth_refined.npy')
 
-rgb=cv2.imread('result-mask/rgb.png')
+rgb=cv2.imread('result/rgb.png')
 depth=preddepth.copy()
 matz = depth.astype('float32').copy() # unit m
 
