@@ -58,7 +58,7 @@ cd lingbot-depth
 pip install uv
 # if cuda is not 128, change line 59 of pyproject.toml 
 # download model 
-modelscope download --model Robbyant/lingbot-depth --local_dir ./robbyant 
+uv run modelscope download --model Robbyant/lingbot-depth --local_dir ./robbyant 
 
 ```
 ## Quick Start
@@ -68,19 +68,9 @@ modelscope download --model Robbyant/lingbot-depth --local_dir ./robbyant
 
 The model is automatically downloaded from Hugging Face on first run (no manual download needed):
 
-modelscope download --model Robbyant/lingbot-depth README.md --local_dir ./dir
 ```bash
 # Basic usage - processes example 0
-python example.py
-
-# Use a different example (0-7 available)
-python example.py --example 1
-
-# Use depth completion optimized model
-python example.py --model robbyant/lingbot-depth-pretrain-vitl-14/model.pt
-
-# Custom output directory
-python example.py --output my_results
+uv run python example.py
 
 # See all options
 python example.py --help
