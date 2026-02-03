@@ -179,13 +179,13 @@ Examples:
     )
 
     parser.add_argument(
-        '--example', type=str, default='0',
+        '--example', type=str, default='8',
         help='Example directory number (default: 0)'
     )
     parser.add_argument(
         '--model', type=str,
-        default='robbyant/lingbot-depth-pretrain-vitl-14',
-        help='Model path or Hugging Face ID (default: robbyant/lingbot-depth-pretrain-vitl-14)'
+        default='robbyant/lingbot-depth-postrain-dc-vitl14/model.pt',
+        help='Model path or Hugging Face ID (default: robbyant/lingbot-depth-pretrain-vitl-14/model.pt)'
     )
     parser.add_argument(
         '--output', type=str, default='result',

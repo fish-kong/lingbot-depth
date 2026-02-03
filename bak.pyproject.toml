@@ -1,0 +1,105 @@
+[project]
+name = "agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    #"pyqt5-qt5==5.15.2",
+    #"pyqtwebengine-qt5==5.15.2",
+    "faiss-cpu>=1.12.0",
+    "langchain>=0.3.27",
+    "numpy>=1.26.0",
+    "psutil>=7.1.3",
+    "tornado>=6.5.2",
+    "pytorch-crf>=0.7.2",
+    "aiohttp>=3.13.2",
+    "diskcache>=5.6.3",
+    "requests>=2.32.5",
+    "onnxruntime-gpu==1.21.0",
+    "peft>=0.18.0",
+    "opencv-python>=4.11.0.86",
+    "pandas>=2.3.3",
+    "zhconv>=1.4.3",
+    "shapely>=2.1.2",
+    "pyclipper>=1.3.0.post6",
+    "pyinstaller>=6.17.0",
+    "pillow>=12.0.0",
+    "ruff>=0.14.8",
+    #"x-anylabeling-cvhub[cpu]",
+    "matplotlib",
+    "open3d",
+    "probreg",
+    "pyarrow>=22.0.0",
+    "fastparquet>=2025.12.0",
+    "scikit-image>=0.26.0",
+    'ultralytics',
+    "jax>=0.9.0",
+    "flax>=0.12.2",
+    #"transformers>=5.0.0",
+    "transformers>=4.57.0",
+    "auto-round>=0.9.6",
+    "librosa>=0.11.0",
+    "cn2an>=0.5.23",
+    "pyaudio>=0.2.14",
+    "sounddevice>=0.5.5",
+    "openai-whisper>=20250625",
+    #"mlx-audio>=0.3.1",
+    #"mlx>=0.30.4",
+    "vllm>=0.12.0",
+    "modelscope>=1.34.0",
+    "httpx>=0.28.1",
+    "qwen-asr>=0.0.6",
+    "trimesh>=4.11.1",
+    "xformers>=0.0.33.post2",
+    "opencv-contrib-python>=4.13.0.90",
+]
+
+
+# 定义可选的安装组
+[project.optional-dependencies]
+cpu = [
+    "torch>=2.7.0",
+    "torchaudio>=2.7.0",
+    "torchvision>=0.22.0"
+]  
+gpu = [
+    "torch>=2.7.0",
+    "torchaudio>=2.7.0",
+    "torchvision>=0.22.0",
+]  
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu128", extra = 'gpu' },
+  { index = "pytorch-cpu", extra = 'cpu' }
+]
+torchvision = [
+  { index = "pytorch-cu128", extra = 'gpu' },
+  { index = "pytorch-cpu", extra = 'cpu' }
+]
+torchaudio = [
+  { index = "pytorch-cu128", extra = 'gpu' },
+  { index = "pytorch-cpu", extra = 'cpu' }
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+#Windows x86 support
+[tool.uv]
+#required-environments = ["sys_platform == 'win32' and platform_machine == 'AMD64'"]
+required-environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
+conflicts = [
+  [
+    { extra = "cpu" },
+    { extra = "gpu" },
+  ],
+]
