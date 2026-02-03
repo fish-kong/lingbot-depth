@@ -58,11 +58,11 @@ def mouse_callback(event, x, y, flags, userdata):
 cv2.namedWindow('Image')
 cv2.setMouseCallback('Image', mouse_callback)
 
-origdepth = np.load('result/depth_input.npy')
-preddepth = np.load('result/depth_refined.npy')
+origdepth = np.load('result-mask/depth_input.npy')
+preddepth = np.load('result-mask/depth_refined.npy')
 
-rgb=cv2.imread('result/rgb.png')
-depth=origdepth.copy()
+rgb=cv2.imread('result-mask/rgb.png')
+depth=preddepth.copy()
 matz = depth.astype('float32').copy() # unit m
 
 para=np.loadtxt('examples/8/intrinsics.txt',dtype=np.float32)
